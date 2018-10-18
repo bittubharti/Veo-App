@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relativeLaout1">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="35dp"
+    android:background="#7b6eb6"
+    android:id="@+id/linearcut2"
+    android:weightSum="2"
+    android:layout_alignParentTop="true"
+
+    >
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:src="@drawable/setting"
+        android:id="@+id/setting1"
+        android:layout_marginLeft="13dp"
+
+        android:layout_marginTop="5dp"
+
+
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/im2"
+        android:layout_marginBottom="10dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:src="@drawable/chat"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+     android:id="@+id/chat_id"
+
+
+        />
+
+
+
+</RelativeLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/downcut"
+        android:layout_below="@id/linearcut2"
+        android:layout_centerHorizontal="true"
+        />
+
+
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="300dp"
+         android:id="@+id/ripple_layout"
+         android:visibility="visible"
+         android:layout_marginTop="@dimen/ripple"
+         >
+         <com.skyfishjy.library.RippleBackground
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="250dp"
+             android:id="@+id/content"
+             app:rb_color="#352a68"
+             app:rb_radius="16dp"
+             app:rb_rippleAmount="4"
+             app:rb_duration="3000"
+             app:rb_scale="6"
+             android:layout_centerInParent="true"
+             >
+
+             <ImageView
+                 android:layout_width="64dp"
+                 android:layout_height="64dp"
+                 android:layout_centerInParent="true"
+                 android:id="@+id/centerImage"
+                 android:src="@drawable/middle" />
+
+
+
+
+         </com.skyfishjy.library.RippleBackground>
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Loking for people near who\nwant to meet now"
+             android:textAlignment="center"
+             android:id="@+id/textView2"
+             android:layout_centerHorizontal="true"
+             android:layout_alignParentBottom="true"
+
+             />
+
+     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/relativeLayout2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearimg"
+            android:gravity="center_horizontal"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/uparrow"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="1dp"
+                />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:background="#352a68"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/relative_up"
+            android:visibility="gone"
+            android:layout_below="@+id/linearimg"
+            android:layout_centerHorizontal="true"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/time"
+                android:id="@+id/imageViewTime"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+              />
+
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:text="Delete"
+                android:textColor="#FFF"
+                android:id="@+id/buttonDelete"
+                android:textAllCaps="false"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:background="@drawable/lightbluehower"
+                android:layout_marginBottom="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                />
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_above="@id/buttonDelete"
+                android:visibility="visible"
+                android:layout_centerHorizontal="true"
+                >
+
+                <TableLayout
+                    android:padding="10dip"
+                    android:layout_gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    >
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/timer"
+                            android:paddingRight="10dip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#e8eaf6"
+
+
+                            />
+
+                    </TableRow>
+                </TableLayout>
+
+
+        </LinearLayout>
+
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:background="#352a68"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/linearimg"
+                android:id="@+id/relative_bottom"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Are you sure?"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#fff"
+                    android:textSize="15sp"
+                    android:id="@+id/text_question" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The request and matches will\nbe deleted"
+                    android:textAlignment="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="45dp"
+                    android:textColor="#fff" />
+
+                <Button
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    android:text="Cancel"
+                    android:textColor="#FFF"
+                    android:id="@+id/buttonCancel"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:background="@drawable/lightbluehower"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginRight="10dp"
+
+                    />
+
+                <Button
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    android:text="Delete"
+                    android:textColor="#FFF"
+                    android:id="@+id/Delete_bottom"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:background="@drawable/lightbluehower"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="15dp"
+                  android:layout_marginLeft="10dp"
+                    />
+            </RelativeLayout>
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="71dp"
+        android:layout_height="85dp"
+        android:layout_above="@+id/relativeLayout2"
+        android:id="@+id/relativeLayout3"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_marginBottom="2dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+
+
+        >
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/down"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:id="@+id/downarrow" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/up2"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/uparrow"
+        android:layout_marginBottom="12dp"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
+
+

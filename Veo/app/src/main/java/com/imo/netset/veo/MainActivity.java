@@ -1,0 +1,314 @@
+package com.imo.netset.veo;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PointF;
+import android.graphics.RectF;
+import android.media.FaceDetector;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+
+import com.daimajia.numberprogressbar.NumberProgressBar;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class MainActivity extends Activity {
+    ImageView imageViewC, imageViewG, imageViewCross, imageViewTime2,setting_m;
+    ImageView imageView_setphoto;
+    String filepicturepath = "";
+     NumberProgressBar progressBar;
+    private Handler progressHandler = new Handler();
+
+    private Timer timer;
+    private NumberProgressBar bnp;
+
+
+    private static int RESULT_LOAD_IMAGE = 1;
+    File mfile;
+    RelativeLayout layout1, layout2, L1;
+
+
+    Button button_result;
+    private static final int MAX_FACES = 5;
+    private RectF[] rects = new RectF[MAX_FACES];
+    Bitmap bitmap565;
+    private Bitmap cameraBitmap = null;
+    ProgressBar progressBarPagination;
+
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        imageViewG = (ImageView) findViewById(R.id.imageView2);
+        imageViewC = (ImageView) findViewById(R.id.imageView);
+        imageViewCross = (ImageView) findViewById(R.id.image_delete);
+
+        layout1 = (RelativeLayout) findViewById(R.id.relative_layout);
+        layout2 = (RelativeLayout) findViewById(R.id.relative_image);
+
+             L1=(RelativeLayout)findViewById(R.id.RelativeTime2);
+
+        imageView_setphoto = (ImageView) findViewById(R.id.imageView3);
+        button_result = (Button) findViewById(R.id.button_requestFor);
+
+
+        setting_m=(ImageView)findViewById(R.id.setting_m);
+
+        setting_m.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                GeneralValues.set_checkvalue(MainActivity.this,"1");
+
+                Intent intent3=new Intent(MainActivity.this,Settings.class);
+                startActivity(intent3);
+
+                overridePendingTransition(R.anim.slide1, R.anim.slide2);
+
+
+
+            }
+        });
+
+
+        button_result.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                bnp = (NumberProgressBar) findViewById(R.id.number_progress_bar);
+                L1.setVisibility(View.VISIBLE);
+
+
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                bnp.incrementProgressBy(4);
+
+                                if (bnp.getProgress() >= 100) {
+                                    timer.cancel();
+                                    Log.d("Progress",""+bnp.getProgress() );
+                                    Intent intent = new Intent(MainActivity.this, Search_People.class);
+                                    startActivity(intent);
+
+                                }
+                                {
+
+
+                                }
+
+                            }
+
+                        });
+
+                    }
+
+                }, 100, 100);
+
+
+            }
+        });
+
+
+        imageViewC.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, 1);
+                detectFaces();
+
+
+            }
+        });
+        imageViewG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 2);
+
+            }
+        });
+
+
+        imageViewCross.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+              public void onClick(View v) {
+                layout2.setVisibility(View.GONE);
+                layout1.setVisibility(View.VISIBLE);
+
+
+            }
+
+
+        });
+
+
+    }
+
+
+    //Face Detection Method under cam
+    private void detectFaces() {
+        if (null != cameraBitmap) {
+            Log.d("FACE_RECOGNITION", "CHECK");
+            int width = cameraBitmap.getWidth();
+            int height = cameraBitmap.getHeight();
+
+            FaceDetector detector = new FaceDetector(width, height, MainActivity.MAX_FACES);
+            FaceDetector.Face[] faces = new FaceDetector.Face[MainActivity.MAX_FACES];
+
+            bitmap565 = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+            Paint ditherPaint = new Paint();
+            Paint drawPaint = new Paint();
+            ditherPaint.setDither(true);
+            drawPaint.setColor(Color.RED);
+            drawPaint.setStyle(Paint.Style.STROKE);
+            drawPaint.setStrokeWidth(2);
+
+            Canvas canvas = new Canvas();
+            canvas.setBitmap(bitmap565);
+            canvas.drawBitmap(cameraBitmap, 0, 0, ditherPaint);
+
+            int facesFound = detector.findFaces(bitmap565, faces);
+            PointF midPoint = new PointF();
+            float eyeDistance = 0.0f;
+            float confidence = 0.0f;
+
+            Log.i("FaceDetector", "Number of faces found: " + facesFound);
+
+            if (facesFound > 0) {
+                for (int index = 0; index < facesFound; ++index) {
+                    faces[index].getMidPoint(midPoint);
+                    eyeDistance = faces[index].eyesDistance();
+                    confidence = faces[index].confidence();
+
+                    Log.i("FaceDetector",
+                            "Confidence: " + confidence +
+                                    ", Eye distance: " + eyeDistance +
+                                    ", Mid Point: (" + midPoint.x + ", " + midPoint.y + ")");
+
+                    canvas.drawRect((int) midPoint.x - eyeDistance,
+                            (int) midPoint.y - eyeDistance,
+                            (int) midPoint.x + eyeDistance,
+                            (int) midPoint.y + eyeDistance, drawPaint);
+                }
+            }
+
+            String filepath = Environment.getExternalStorageDirectory() + "/facedetect" + System.currentTimeMillis() + ".jpg";
+
+            try {
+                FileOutputStream fos = new FileOutputStream(filepath);
+
+                bitmap565.compress(Bitmap.CompressFormat.JPEG, 90, fos);
+
+                fos.flush();
+                fos.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+       }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+
+            if (requestCode == 1) {
+                try {
+                    cameraBitmap = (Bitmap) data.getExtras().get("data");
+                    imageView_setphoto.setImageBitmap(cameraBitmap);
+
+                   layout2.setVisibility(View.VISIBLE);
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+            if (requestCode == 2) {
+
+                if (resultCode != Activity.RESULT_CANCELED) {
+                    try {
+                        Uri selectedImage = data.getData();
+
+                        if (selectedImage != null) {
+                            String[] filePath = {MediaStore.Images.Media.DATA};
+
+                            Cursor c = getContentResolver().query(selectedImage, filePath,
+                                    null, null, null);
+
+                            c.moveToFirst();
+
+                            int columnIndex = c.getColumnIndex(filePath[0]);
+
+                            filepicturepath = c.getString(columnIndex);
+
+                            c.close();
+                            final BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inJustDecodeBounds = true;
+                            options.inSampleSize = 2;
+                            options.inJustDecodeBounds = false;
+                            options.inTempStorage = new byte[16 * 1024];
+
+                            Bitmap bmp = BitmapFactory.decodeFile(filepicturepath, options);
+                            Bitmap resizeBitmap = Bitmap.createScaledBitmap(bmp, 200, 200, true);
+
+                            Log.e("ORIENT", filepicturepath + "");
+
+                            mfile = new File(filepicturepath);
+                            String strFileName = mfile.getName();
+                            Common com = new Common();
+                            filepicturepath = com.saveToInternalStorage(this, resizeBitmap, strFileName);
+                            imageView_setphoto.setImageBitmap(resizeBitmap);
+                            layout2.setVisibility(View.VISIBLE);
+                            imageView_setphoto.setVisibility(View.VISIBLE);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
+
+}

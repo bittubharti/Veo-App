@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relative_layout6"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#7b6eb6"
+        android:layout_alignParentTop="true"
+        android:id="@+id/lineardowncut"
+        android:weightSum="2"
+        >
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+  >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:src="@drawable/back"
+            android:id="@+id/im"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="center"
+            />
+
+</RelativeLayout>
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:src="@drawable/setting"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+
+            />
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/downcut"
+        android:layout_below="@id/lineardowncut"
+        android:layout_centerHorizontal="true"
+      android:layout_gravity="center"
+        android:id="@+id/imageView4" />
+
+<Button
+    android:layout_width="280dp"
+    android:layout_height="40dp"
+    android:text="Preferences"
+   android:background="@drawable/gray3"
+    android:textAllCaps="false"
+    android:id="@+id/preference_btn"
+    android:textColor="#ffff"
+
+    android:layout_above="@+id/help_btn"
+    android:layout_alignStart="@+id/help_btn"
+    android:layout_marginBottom="70dp" />
+
+    <Button
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:text="Help"
+        android:textAllCaps="false"
+        android:id="@+id/help_btn"
+        android:textColor="#ffff"
+        android:background="@drawable/gray3"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="200dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contect Us"
+       android:textAllCaps="false"
+
+        android:gravity="center"
+        android:layout_alignTop="@+id/help_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details,Privacy policy &amp; more"
+      android:textAllCaps="false"
+        android:gravity="center"
+
+
+        android:layout_alignTop="@+id/preference_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp" />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+
+    android:orientation="vertical"
+    android:weightSum="2"
+    tools:context="com.imo.netset.veo.MainActivity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="0.4">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#7b6eb6"
+        android:layout_alignParentTop="true"
+        android:id="@+id/lineardowncut"
+        >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:src="@drawable/setting"
+        android:id="@+id/setting_m"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+       android:layout_marginLeft="10dp"
+
+        />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/downcut"
+        android:layout_below="@id/lineardowncut"
+        android:layout_centerHorizontal="true" />
+
+
+
+    <RelativeLayout
+        android:visibility="visible"
+        android:id="@+id/relative_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_margin="40dp"
+
+        >
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center_horizontal">
+  <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:background="@drawable/camera"
+      android:id="@+id/imageView"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/polariod"
+        android:id="@+id/imageView2"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_marginLeft="30dp"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:text="the photo is visible only during\n meeting request"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/layout"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relative_image"
+        android:visibility="gone"
+        android:layout_width="280dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:layout_height="300dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView3"
+            android:visibility="visible"
+            android:scaleType="fitXY" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/imagecut"
+            android:id="@+id/image_delete"
+           >
+
+        </ImageView>
+
+
+        </RelativeLayout>
+
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/RelativeTime2"
+            android:visibility="gone"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            >
+
+
+            <ImageView
+                android:id="@+id/timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/time"
+                android:layout_centerInParent="true"
+                >
+
+            </ImageView>
+
+            <com.daimajia.numberprogressbar.NumberProgressBar
+                android:id="@+id/number_progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timer"
+                style="@style/NumberProgressBar_Twinkle_Night"
+                custom:progress_unreached_color="#CCCCCC"
+                custom:progress_reached_color="#ffffff"
+                custom:progress_unreached_bar_height="0.75dp"
+                custom:progress_reached_bar_height="1.5dp"
+                custom:progress_text_size="10sp"
+                custom:progress_text_color="#ffffff"
+                custom:progress_text_offset="1dp"
+                custom:progress_text_visibility="visible"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1.6"
+    android:gravity="center">
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:textColor="#FFF"
+        android:id="@+id/button_requestFor"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:background="@drawable/greyhower"
+        android:text="request for 1 hour "
+        android:layout_alignEnd="@+id/looking"
+        android:textAllCaps="false"
+
+        />
+</RelativeLayout>
+
+</LinearLayout>
+
+

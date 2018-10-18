@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#352a68"
+        android:id="@+id/RelativeG"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+             android:src="@drawable/logo"
+            android:layout_marginBottom="5dp"
+
+            />
+
+
+
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/downcut"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+      android:layout_below="@id/RelativeG"
+      android:id="@+id/down_g"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anonymous App\nfor people who want to meet\nRight Now"
+        android:id="@+id/Gtext1"
+       android:layout_below="@+id/down_g"
+
+        android:gravity="center"
+android:layout_marginTop="20dp"
+        android:textSize="20dp"
+
+
+        android:layout_centerHorizontal="true" />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:text="Gender"
+    android:textSize="20dp"
+    android:layout_marginLeft="140dp"
+    android:layout_marginTop="40dp"
+    android:id="@+id/textView"
+    android:layout_below="@+id/Gtext1"
+    android:layout_centerHorizontal="true" />
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:id="@+id/linearLayout"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:gravity="center"
+    android:layout_below="@+id/textView"
+    android:layout_centerHorizontal="true">
+
+    <ImageView
+        android:id="@+id/male"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selected2"
+        android:layout_below="@+id/textView"
+        android:layout_alignStart="@+id/Gtext1"
+        android:layout_marginLeft="20dp"
+        />
+    <ImageView
+        android:id="@+id/female"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/female"
+        android:layout_below="@+id/textView"
+        android:layout_alignStart="@+id/Gtext1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        />
+
+</LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/looking"
+        android:text="Looking For"
+        android:textSize="20dp"
+        android:layout_below="@id/linearLayout"
+      android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@id/looking"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:gravity="center"
+
+    android:id="@+id/linearLayout2">
+
+    <ImageView
+        android:id="@+id/male_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/male"
+        android:layout_marginLeft="10dp"
+
+        />
+<ImageView
+    android:id="@+id/female_id"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selected1"
+    android:layout_gravity="center"
+    />
+
+    <ImageView
+        android:id="@+id/both_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/both"
+        android:layout_marginRight="10dp"
+        />
+
+</LinearLayout>
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/linearLayout2"
+      android:text="By clicking on start you are agreeing to the"
+      android:textAllCaps="false"
+      android:layout_centerInParent="true"
+
+      android:id="@+id/click"
+      />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/click"
+        android:text="Terms and Conditions"
+        android:textAllCaps="false"
+        android:textColor="#ff0000ff"
+        android:layout_centerInParent="true"
+        android:id="@+id/terms1"
+
+
+        />
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="44dp"
+        android:text="Start"
+        android:textColor="#FFF"
+        android:id="@+id/button"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:background="@drawable/greyhower"
+        android:layout_marginTop="15dp"
+        android:textAllCaps="false"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp"
+
+        />
+
+</RelativeLayout>
