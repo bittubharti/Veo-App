@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * Created by netset on 5/7/16.
+ * ...Created by netset on 5/7/16.
  */
 public class Preferences extends Activity implements View.OnClickListener
 {
